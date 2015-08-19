@@ -47,3 +47,5 @@ ldap_access_order = expire
 sudo_provider = <%= scope.lookupvar('sssd::sudo_provider') %>
 ldap_sudo_search_base = <%= scope.lookupvar('sssd::ldap_sudo_search_base') %>
 autofs_provider = <%= scope.lookupvar('sssd::autofs_provider') %>
+
+[autofs]
