@@ -40,6 +40,22 @@
 #   String. Specifies the Schema Type in use on the target LDAP server.
 #   Default: rfc2307
 #
+# [*autofs_provider*]
+#   String. Specifies who manages users home directory creation/mounting.
+#   Default: ldap
+#
+# [*sudo_provider*]
+#   String. Manages where the system checks for sudo permissions.
+#   Default: ldap
+#
+# [*ldap_sudo_search_base*]
+#   String. Specifies the search base for the sudoers.
+#   Default: ou=sudoers,dc=example,dc=org
+#
+# [*homedir_substring*]
+#   String. Sets where the users home directory should be created.
+#   Default : /home
+#
 # [*manage_nsswitch*]
 #   Boolean. Weather to manage /etc/nsswitch.conf.
 #   Default: true
@@ -75,9 +91,13 @@ class sssd (
   $ldap_tls_reqcert   = 'demand',
   $ldap_tls_cacert    = '/etc/pki/tls/certs/ca-bundle.crt',
   $ldap_enumerate     = true,
+  $autofs_provider    = 'ldap',
+  $sudo_provider      = 'ldap',
+  $ldap_sudo_search_base = 'ou=sudoers,dc=example,dc=org',
   $manage_nsswitch    = true,
   $logsagent          = undef,
   $debug_level        = '0x02F0',
+  $homedir_substring  = '/home',
 ){
 
   anchor { '::sssd::begin': } ->

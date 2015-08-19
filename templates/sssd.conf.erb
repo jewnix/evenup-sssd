@@ -12,6 +12,7 @@ debug_level = <%= scope.lookupvar('sssd::debug_level') %>
 reconnection_retries = 3
 filter_groups = <%= scope.lookupvar('sssd::filter_groups') %>
 filter_users = <%= scope.lookupvar('sssd::filter_users') %>
+homedir_substring = <%= scope.lookupvar('sssd::homedir_substring') %>
 
 [pam]
 debug_level = <%= scope.lookupvar('sssd::debug_level') %>
@@ -43,3 +44,6 @@ ldap_chpass_update_last_change = true
 ldap_pwd_policy = <%= scope.lookupvar('sssd::ldap_pwd_policy') %>
 ldap_account_expire_policy = shadow
 ldap_access_order = expire
+sudo_provider = <%= scope.lookupvar('sssd::sudo_provider') %>
+ldap_sudo_search_base = <%= scope.lookupvar('sssd::ldap_sudo_search_base') %>
+autofs_provider = <%= scope.lookupvar('sssd::autofs_provider') %>

@@ -22,6 +22,12 @@ class sssd::install (
     ensure => 'latest',
   }
 
+  if versioncmp($::operatingsystemmajrelease, '6') >= 0 {
+    package { 'pam_ldap':
+      ensure => 'installed',
+    }
+   }
+
   if versioncmp($::operatingsystemrelease, '7.0') >= 0 {
     package { 'oddjob-mkhomedir':
       ensure => 'installed',
